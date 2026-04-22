@@ -1,48 +1,56 @@
-// =========================================================================
-// MOTEUR DE GÉNÉRATION (Ne pas modifier)
-// Ce script lit le fichier config.js et construit la page dynamiquement
-// =========================================================================
+async function generateZip() {
+    const btn = document.getElementById('btn-main');
+    const userId = document.getElementById('user-id').value;
+    const prodName = document.getElementById('prod-name').value;
+    const prodText = document.getElementById('prod-text').value;
 
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injection du contenu visuel
-    document.getElementById("render-titre").innerHTML = CONFIG.titre_principal;
-    document.getElementById("render-sous-titre").innerHTML = CONFIG.sous_titre;
-    document.getElementById("render-image").src = CONFIG.image_produit;
-    document.getElementById("render-texte").innerHTML = CONFIG.texte_de_vente;
+    if (!userId || !prodText) {
+        alert("Veuillez remplir votre ID et coller un texte.");
+        return;
+    }
 
-    // 2. Détection du lien d'affiliation choisi pour les boutons
-    const lienChoisi = CONFIG.lien_du_bouton === "systeme_io" ? CONFIG.lien_systeme_io : CONFIG.lien_1tpe;
+    btn.innerText = "⏳ Génération en cours...";
+    btn.disabled = true;
+
+    // 1. Création du code du mini-site final (Le template que l'utilisateur recevra)
+    const siteHtml = `
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${prodName}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 leading-relaxed">
+    <main class="max-w-2xl mx-auto py-12 px-6">
+        <h1 class="text-4xl font-extrabold mb-6">${prodName}</h1>
+        <div class="prose prose-lg mb-10">${prodText.replace(/\n/g, '<br>')}</div>
+        
+        <div class="text-center">
+            <a href="${userId.includes('sa') ? 'https://systeme.io/produit?sa=' + userId : 'http://go.' + userId + '.net'}" 
+               class="inline-block bg-orange-500 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-xl">
+               Accéder à l'offre maintenant 🚀
+            </a>
+        </div>
+    </main>
+    <footer class="mt-20 py-10 bg-gray-50 text-center text-xs text-gray-400 border-t">
+        <p>Page générée via <a href="https://worldchris.github.io/sio-infinite-bridge-pages/" class="underline">Sio Infinite</a></p>
+        <p class="mt-2 italic">Avertissement : Ce site contient des liens d'affiliation. Consultez un professionnel pour toute décision importante.</p>
+    </footer>
+</body>
+</html>`;
+
+    // 2. Création du fichier ZIP avec JSZip
+    const zip = new JSZip();
+    zip.file("index.html", siteHtml);
     
-    // 3. Configuration des boutons d'Appel à l'Action (CTA)
-    const btnHaut = document.getElementById("render-bouton-haut");
-    const btnBas = document.getElementById("render-bouton-bas");
-    
-    btnHaut.href = lienChoisi;
-    btnHaut.innerHTML = CONFIG.texte_bouton;
-    
-    btnBas.href = lienChoisi;
-    btnBas.innerHTML = CONFIG.texte_bouton;
+    // 3. Téléchargement
+    const content = await zip.generateAsync({type:"blob"});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(content);
+    link.download = `mini-site-${prodName.toLowerCase().replace(/ /g, '-')}.zip`;
+    link.click();
 
-    // 4. INJECTION SEO : Création des microdonnées JSON-LD pour l'IA
-    // C'est ce qui permet d'être indexé proprement en 2026
-    const schemaJSON = {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": CONFIG.nom_produit,
-        "image": CONFIG.image_produit,
-        "description": CONFIG.sous_titre,
-        "offers": {
-            "@type": "Offer",
-            "price": CONFIG.prix,
-            "priceCurrency": CONFIG.devise,
-            "url": window.location.href, // L'URL de la page elle-même
-            "seller": {
-                "@type": "Organization",
-                "name": "Partenaire Affilié"
-            }
-        }
-    };
-
-    // On insère le script généré dans la balise prévue à cet effet
-    document.getElementById("seo-schema").textContent = JSON.stringify(schemaJSON);
-});
+    btn.innerText = "📥 Télécharger mon Mini-Site (ZIP)";
+    btn.disabled = false;
+}
