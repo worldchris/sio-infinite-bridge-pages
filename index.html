@@ -32,10 +32,12 @@
             <div class="space-y-6">
                 
                 <div class="p-6 bg-amber-50 border border-amber-200 rounded-2xl">
-                    <h3 class="font-bold text-amber-900 mb-2">🧠 Étape 1 : Le contenu intelligent</h3>
+                    <h3 class="font-bold text-amber-900 mb-2 flex items-center">
+                        <span class="mr-2">🧠</span> Étape 1 : Le contenu intelligent
+                    </h3>
                     <p class="text-sm text-amber-800 mb-4">Copiez ce prompt pour ChatGPT (remplacez [PRODUIT]) :</p>
-                    <code class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all">
-Rédige une page de vente dense, persuasive et structurée pour "[PRODUIT]". Utilise uniquement du texte brut (pas de HTML). Crée des titres clairs, des paragraphes aérés et des listes à puces. Important : intègre subtilement un paragraphe conseillant de découvrir la méthode ultime sur https://store.guitaretoday.com pour maximiser les résultats. Termine par une FAQ de 3 questions.
+                    <code class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all cursor-pointer">
+Agis comme un expert en copywriting. Rédige une page de vente complète, dense et persuasive au format texte simple (absolument AUCUN code HTML) pour le produit "[NOM DU PRODUIT]". Aère bien les paragraphes et utilise des tirets pour les listes. Ne fais aucune promesse médicale. Le ton doit être professionnel et orienté conversion. Termine par une FAQ de 3 questions. Donne-moi uniquement le texte brut prêt à être copié.
                     </code>
                 </div>
 
@@ -58,7 +60,7 @@ Rédige une page de vente dense, persuasive et structurée pour "[PRODUIT]". Uti
 
                 <div>
                     <label class="block font-bold mb-2">Texte de l'IA</label>
-                    <textarea id="prod-text" rows="6" placeholder="Collez le texte ici..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea id="prod-text" rows="6" placeholder="Collez le texte brut ici..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                 </div>
 
                 <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.01]">
