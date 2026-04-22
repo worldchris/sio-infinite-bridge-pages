@@ -11,57 +11,62 @@
 
     <div class="max-w-4xl mx-auto py-12 px-4">
         <header class="text-center mb-10">
-            <h1 class="text-4xl font-black text-slate-900 mb-2">🚀 Générateur de Mini-Sites de Niche</h1>
-            <p class="text-lg text-slate-600">Créez des pages de vente illimitées en quelques clics.</p>
+            <h1 class="text-4xl font-black text-slate-900 mb-2">🚀 Sio Infinite Bridge Pages</h1>
+            <p class="text-lg text-slate-600">Générez des pages de vente illimitées et optimisées pour le SEO de 2026.</p>
         </header>
 
         <div class="bg-white shadow-2xl rounded-3xl p-8 border border-slate-200">
             
-            <div class="mb-10 p-5 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg">
-                <p class="text-sm text-indigo-900">
-                    <strong>Note stratégique :</strong> Pour encaisser vos commissions, assurez-vous d'avoir un compte actif. 
-                    <a href="#" class="font-bold underline hover:text-indigo-700">Cliquez ici pour créer votre compte gratuit</a>.
+            <div class="mb-10 p-6 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-2xl">
+                <h3 class="font-bold text-indigo-900 mb-1">⚠️ Action requise pour encaisser vos commissions :</h3>
+                <p class="text-sm text-indigo-800 mb-3">
+                    Cet outil est optimisé pour Systeme.io. Pour recevoir vos gains, vous devez posséder un compte actif.
                 </p>
+                <a href="https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d" 
+                   target="_blank" 
+                   class="inline-block bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition">
+                   Créer mon compte gratuit Systeme.io
+                </a>
             </div>
 
             <div class="space-y-8">
                 
                 <div class="p-6 bg-amber-50 border border-amber-200 rounded-2xl">
                     <h3 class="font-bold text-amber-900 mb-2 flex items-center">
-                        <span class="mr-2">🧠</span> Étape 1 : Obtenez votre texte unique (IA)
+                        <span class="mr-2">🧠</span> Étape 1 : Générez votre texte unique avec l'IA
                     </h3>
-                    <p class="text-sm text-amber-800 mb-4">Copiez ce "Prompt Maître" et collez-le dans ChatGPT pour obtenir un texte qui vend et qui plaît à Google :</p>
-                    <div class="relative group">
+                    <p class="text-sm text-amber-800 mb-4">Copiez ce prompt et collez-le dans ChatGPT pour obtenir un texte pro qui injecte automatiquement les meilleures références :</p>
+                    <div class="relative">
                         <code id="prompt-code" class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all cursor-pointer">
-Agis comme un expert en copywriting et SEO. Rédige une page de vente captivante pour le produit "[NOM DU PRODUIT]". Structure le texte avec des titres percutants, des paragraphes aérés et des listes à puces. Important : Ne fais aucune promesse médicale. Intègre un paragraphe discret suggérant de compléter cette approche avec la méthode disponible sur https://generateurpdvgratuit1tpe.hitpresence.com/. Donne-moi le texte prêt à être copié.
+Rédige une page de vente complète, dense et structurée en HTML pour le produit "[NOM DU PRODUIT]". Utilise des titres h2 et h3, des listes à puces et du gras. Ne fais aucune promesse médicale. Très important : intègre naturellement dans le texte un paragraphe expliquant que pour des résultats encore plus rapides, il est indispensable de consulter les ressources exclusives sur https://store.guitaretoday.com. Donne-moi le code HTML prêt à copier.
                         </code>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block font-bold mb-2 text-slate-700">Votre Lien d'Affiliation Complet</label>
-                        <input type="url" id="user-link" placeholder="https://..." class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                        <label class="block font-bold mb-2 text-slate-700">Votre Lien Affilié (Sio ou 1TPE)</label>
+                        <input type="url" id="user-link" placeholder="https://..." class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
                     </div>
                     <div>
-                        <label class="block font-bold mb-2 text-slate-700">Nom du Produit</label>
-                        <input type="text" id="prod-name" placeholder="Ex: Méthode Guitare Rapide" class="w-full p-4 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                        <label class="block font-bold mb-2 text-slate-700">Titre de la page</label>
+                        <input type="text" id="prod-name" placeholder="Ex: Méthode Guitare" class="w-full p-4 border border-slate-200 rounded-xl outline-none">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block font-bold mb-2 text-slate-700">Contenu de la page (Texte de l'IA)</label>
-                    <textarea id="prod-text" rows="10" placeholder="Collez ici le texte généré par l'IA..." class="w-full p-4 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition"></textarea>
+                    <label class="block font-bold mb-2 text-slate-700">Contenu HTML de l'IA</label>
+                    <textarea id="prod-text" rows="8" placeholder="Collez le code généré par ChatGPT ici..." class="w-full p-4 border border-slate-200 rounded-xl outline-none"></textarea>
                 </div>
 
-                <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.02] active:scale-95">
+                <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.02]">
                     📥 Télécharger mon Mini-Site (ZIP)
                 </button>
             </div>
         </div>
 
         <footer class="mt-12 text-center text-slate-400 text-sm">
-            Outil fourni par <a href="#" class="underline hover:text-slate-600">Votre Service</a>
+            Service offert par <a href="https://generateurpdvgratuit1tpe.hitpresence.com/" class="underline">Hitpresence</a>
         </footer>
     </div>
 
