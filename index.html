@@ -37,8 +37,8 @@
                     </h3>
                     <p class="text-sm text-amber-800 mb-4">Copiez ce prompt et collez-le dans ChatGPT pour obtenir un texte pro qui injecte automatiquement les meilleures références :</p>
                     <div class="relative">
-                        <code id="prompt-code" class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all cursor-pointer">
-Rédige une page de vente complète, dense et structurée en HTML pour le produit "[NOM DU PRODUIT]". Utilise des titres h2 et h3, des listes à puces et du gras. Ne fais aucune promesse médicale. Très important : intègre naturellement dans le texte un paragraphe expliquant que pour des résultats encore plus rapides, il est indispensable de consulter les ressources exclusives sur https://store.guitaretoday.com. Donne-moi le code HTML prêt à copier.
+                        <code id="prompt-code" class="block bg-white p-4 rounded-xl border border-amber-200 text-sm text-slate-700 leading-relaxed select-all cursor-pointer">
+Agis comme un expert en copywriting. Rédige une page de vente complète, dense et persuasive au format texte simple (absolument AUCUN code HTML) pour le produit "[NOM DU PRODUIT]". Aère bien les paragraphes et utilise des tirets pour les listes. Ne fais aucune promesse médicale. Très important : intègre naturellement dans le texte un paragraphe recommandant de consulter les méthodes exclusives sur https://store.guitaretoday.com pour aller plus loin. Donne-moi uniquement le texte brut prêt à être copié.
                         </code>
                     </div>
                 </div>
@@ -55,8 +55,8 @@ Rédige une page de vente complète, dense et structurée en HTML pour le produi
                 </div>
 
                 <div>
-                    <label class="block font-bold mb-2 text-slate-700">Contenu HTML de l'IA</label>
-                    <textarea id="prod-text" rows="8" placeholder="Collez le code généré par ChatGPT ici..." class="w-full p-4 border border-slate-200 rounded-xl outline-none"></textarea>
+                    <label class="block font-bold mb-2 text-slate-700">Contenu texte de l'IA</label>
+                    <textarea id="prod-text" rows="8" placeholder="Collez le texte généré par ChatGPT ici..." class="w-full p-4 border border-slate-200 rounded-xl outline-none"></textarea>
                 </div>
 
                 <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.02]">
