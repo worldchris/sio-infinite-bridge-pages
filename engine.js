@@ -1,18 +1,23 @@
 async function generateZip() {
     const btn = document.getElementById('btn-main');
-    const userLink = document.getElementById('user-link').value;
-    const prodName = document.getElementById('prod-name').value;
-    const prodText = document.getElementById('prod-text').value;
+    const userLink = document.getElementById('user-link').value.trim();
+    const prodName = document.getElementById('prod-name').value.trim();
+    const prodText = document.getElementById('prod-text').value.trim();
 
     if (!userLink || !prodText || !prodName) {
-        alert("Veuillez remplir tous les champs (Lien, Titre et Texte HTML).");
+        alert("Veuillez remplir tous les champs avant de générer le site.");
         return;
     }
 
-    btn.innerText = "⏳ Génération en cours...";
+    btn.innerText = "⏳ Création du pack en cours...";
     btn.disabled = true;
 
-    // Création du code du mini-site final
+    // Préparation du contenu : on gère les sauts de ligne si l'utilisateur n'a pas mis de HTML
+    const formattedContent = prodText.includes('<p>') || prodText.includes('</h2>') 
+        ? prodText 
+        : prodText.split('\n').map(para => para.trim() ? `<p class="mb-4">${para}</p>` : '').join('');
+
+    // Création du code source du mini-site
     const siteHtml = `
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,39 +27,59 @@ async function generateZip() {
     <title>${prodName}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-900 leading-relaxed">
-    <main class="max-w-3xl mx-auto py-12 px-6">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-10 text-center text-gray-900">${prodName}</h1>
+<body class="bg-white text-gray-900 antialiased">
+    <main class="max-w-3xl mx-auto py-16 px-6">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl md:text-6xl font-black mb-6 text-gray-900 tracking-tight">${prodName}</h1>
+            <div class="h-1 w-20 bg-indigo-600 mx-auto"></div>
+        </header>
         
-        <div class="prose prose-lg mx-auto mb-12 text-gray-700">
-            ${prodText}
+        <div class="prose prose-indigo prose-lg mx-auto text-gray-700 leading-relaxed">
+            ${formattedContent}
         </div>
         
-        <div class="text-center mt-12 mb-8">
-            <a href="${userLink}" 
-               class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-5 px-12 rounded-full text-2xl shadow-2xl transition transform hover:scale-105">
-               Accéder à la version numérique maintenant 🚀
+        <div class="mt-16 text-center">
+            <a href="${userLink}" target="_blank" rel="noopener"
+               class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 px-12 rounded-full text-2xl shadow-2xl transition transform hover:scale-105">
+               Accéder au programme maintenant 🚀
             </a>
+            <p class="mt-6 text-sm text-gray-400">Paiement sécurisé et accès immédiat</p>
         </div>
     </main>
-    <footer class="mt-20 py-10 bg-gray-50 text-center text-xs text-gray-500 border-t">
-        <p>Propulsé par <a href="https://worldchris.github.io/sio-infinite-bridge-pages/" class="text-blue-500 hover:underline">Sio Infinite Bridge Pages</a></p>
-        <p class="mt-3 italic max-w-2xl mx-auto px-4">Avertissement légal : Ce site propose des contenus à but informatif et éducatif, intégrant des liens d'affiliation. Aucune information présentée ici ne doit être interprétée comme un avis médical ou professionnel. Veuillez consulter un spécialiste certifié pour toute question spécifique.</p>
+
+    <footer class="mt-24 py-12 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <p class="text-xs text-gray-400">
+                Propulsé par <a href="${window.location.href}" class="underline">Sio Infinite Builder</a>
+            </p>
+            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
+                Avertissement : Ce site contient des liens d'affiliation. Les informations sont fournies à titre éducatif et ne remplacent pas l'avis d'un professionnel.
+            </p>
+        </div>
     </footer>
 </body>
 </html>`;
 
-    // Création du fichier ZIP
-    const zip = new JSZip();
-    zip.file("index.html", siteHtml);
-    
-    // Téléchargement
-    const content = await zip.generateAsync({type:"blob"});
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(content);
-    link.download = `minisite-${prodName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.zip`;
-    link.click();
-
-    btn.innerText = "📥 Télécharger mon Mini-Site (ZIP)";
-    btn.disabled = false;
+    try {
+        const zip = new JSZip();
+        zip.file("index.html", siteHtml);
+        
+        const content = await zip.generateAsync({type: "blob"});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        
+        // Nom du fichier nettoyé
+        const safeName = prodName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        link.download = `site-${safeName}.zip`;
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error("Erreur ZIP:", error);
+        alert("Une erreur est survenue lors de la création du fichier.");
+    } finally {
+        btn.innerText = "📥 Télécharger mon Mini-Site (ZIP)";
+        btn.disabled = false;
+    }
 }
