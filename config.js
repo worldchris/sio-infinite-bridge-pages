@@ -4,8 +4,8 @@
 
 const CONFIG = {
     // 1. VOS LIENS D'AFFILIATION
-    lien_systeme_io: "https://systeme.io/?sa=VOTRE_ID_AFFILIE", // Mettez votre lien ici
-    lien_1tpe: "https://go.VOTRE_PSEUDO.VENDEUR.PRODUIT.1.1tpe.net", // Optionnel
+    lien_systeme_io: "https://systeme.io/?sa=sa16047325683a6745455482376be9c81d", // Mettez votre lien ici
+    lien_1tpe: "https://go.mybiz.1.1tpe.net", // Optionnel
 
     // 2. INFORMATIONS DU PRODUIT (Pour le SEO et l'Intelligence Artificielle)
     nom_produit: "Formation Business Automatique",
