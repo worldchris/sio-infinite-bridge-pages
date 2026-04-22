@@ -5,11 +5,11 @@ async function generateZip() {
     const prodText = document.getElementById('prod-text').value.trim();
     const prodImg = document.getElementById('prod-img').value.trim() || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800';
 
-    // TES LIENS STRATÉGIQUES
+    // TES LIENS STRATÉGIQUES (Le double levier)
     const sioLink = "https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d";
     const toolLink = "https://worldchris.github.io/sio-infinite-bridge-pages/";
     
-    // Fail-safe : si pas d'ID, c'est toi qui touches
+    // Sécurité : si l'utilisateur oublie son lien, on met ton lien Systeme.io
     const finalLink = (inputLink.length < 10) ? sioLink : inputLink;
 
     if (!prodText || !prodName) { alert("Veuillez remplir les informations."); return; }
@@ -17,8 +17,10 @@ async function generateZip() {
     btn.innerText = "⏳ Génération Premium en cours...";
     btn.disabled = true;
 
+    // Mise en page aérée du texte
     const formattedContent = prodText.split('\n').map(p => p.trim() ? `<p class="mb-6">${p}</p>` : '').join('');
 
+    // LE NOUVEAU TEMPLATE PREMIUM
     const siteHtml = `
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,13 +40,12 @@ async function generateZip() {
       "@type": "Product",
       "name": "${prodName}",
       "image": "${prodImg}",
-      "description": "${prodName} - Solution numérique premium.",
-      "brand": { "@type": "Brand", "name": "Digital Life" },
+      "description": "${prodName} - Accès direct.",
       "offers": { "@type": "Offer", "url": "${finalLink}", "priceCurrency": "EUR" }
     }
     </script>
 </head>
-<body class="py-12 px-4 md:py-24">
+<body class="py-12 px-4 md:py-24 text-slate-800">
     <main class="max-w-4xl mx-auto card overflow-hidden border border-slate-100">
         <img src="${prodImg}" alt="${prodName}" class="w-full h-96 object-cover shadow-inner">
         <div class="p-8 md:p-16">
