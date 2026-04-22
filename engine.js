@@ -5,57 +5,42 @@ async function generateZip() {
     const prodText = document.getElementById('prod-text').value.trim();
 
     if (!userLink || !prodText || !prodName) {
-        alert("Veuillez remplir tous les champs avant de générer le site.");
+        alert("Veuillez remplir tous les champs.");
         return;
     }
 
-    btn.innerText = "⏳ Création du pack en cours...";
+    btn.innerText = "⏳ Création du ZIP...";
     btn.disabled = true;
 
-    // Préparation du contenu : on gère les sauts de ligne si l'utilisateur n'a pas mis de HTML
-    const formattedContent = prodText.includes('<p>') || prodText.includes('</h2>') 
-        ? prodText 
-        : prodText.split('\n').map(para => para.trim() ? `<p class="mb-4">${para}</p>` : '').join('');
+    // Mise en forme du texte (sécurité si l'IA n'a pas mis de HTML)
+    const formattedContent = prodText.includes('<') ? prodText : prodText.replace(/\n/g, '<br>');
 
-    // Création du code source du mini-site
+    // Code du mini-site final que l'utilisateur va héberger
     const siteHtml = `
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${prodName}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-900 antialiased">
     <main class="max-w-3xl mx-auto py-16 px-6">
-        <header class="mb-12 text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-6 text-gray-900 tracking-tight">${prodName}</h1>
-            <div class="h-1 w-20 bg-indigo-600 mx-auto"></div>
-        </header>
-        
-        <div class="prose prose-indigo prose-lg mx-auto text-gray-700 leading-relaxed">
-            ${formattedContent}
-        </div>
-        
-        <div class="mt-16 text-center">
-            <a href="${userLink}" target="_blank" rel="noopener"
-               class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 px-12 rounded-full text-2xl shadow-2xl transition transform hover:scale-105">
-               Accéder au programme maintenant 🚀
+        <h1 class="text-4xl md:text-6xl font-black mb-10 text-center">${prodName}</h1>
+        <div class="prose prose-lg mx-auto mb-12 text-gray-700">${formattedContent}</div>
+        <div class="text-center mt-12">
+            <a href="${userLink}" target="_blank" class="inline-block bg-indigo-600 text-white font-bold py-5 px-12 rounded-full text-2xl shadow-2xl transition transform hover:scale-105">
+               Accéder à l'offre maintenant 🚀
             </a>
-            <p class="mt-6 text-sm text-gray-400">Paiement sécurisé et accès immédiat</p>
         </div>
     </main>
-
-    <footer class="mt-24 py-12 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <p class="text-xs text-gray-400">
-                Propulsé par <a href="${window.location.href}" class="underline">Sio Infinite Builder</a>
-            </p>
-            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
-                Avertissement : Ce site contient des liens d'affiliation. Les informations sont fournies à titre éducatif et ne remplacent pas l'avis d'un professionnel.
-            </p>
-        </div>
+    <footer class="mt-24 py-10 bg-gray-50 border-t text-center">
+        <p class="text-xs text-gray-400">
+            Page générée via <a href="https://worldchris.github.io/sio-infinite-bridge-pages/" class="underline text-indigo-400">Sio Infinite Builder</a>
+        </p>
+        <p class="mt-4 text-[10px] text-gray-300 px-6 italic">
+            Note : Ce site contient des liens d'affiliation. Aucune information ici ne constitue un avis médical ou financier.
+        </p>
     </footer>
 </body>
 </html>`;
@@ -63,21 +48,13 @@ async function generateZip() {
     try {
         const zip = new JSZip();
         zip.file("index.html", siteHtml);
-        
         const content = await zip.generateAsync({type: "blob"});
         const link = document.createElement('a');
         link.href = URL.createObjectURL(content);
-        
-        // Nom du fichier nettoyé
-        const safeName = prodName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        link.download = `site-${safeName}.zip`;
-        
-        document.body.appendChild(link);
+        link.download = `site-${prodName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.zip`;
         link.click();
-        document.body.removeChild(link);
-    } catch (error) {
-        console.error("Erreur ZIP:", error);
-        alert("Une erreur est survenue lors de la création du fichier.");
+    } catch (e) {
+        alert("Erreur lors de la création du ZIP.");
     } finally {
         btn.innerText = "📥 Télécharger mon Mini-Site (ZIP)";
         btn.disabled = false;
