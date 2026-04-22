@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de Mini-Sites Express</title>
+    <title>Générateur de Mini-Sites Pro & SEO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
@@ -11,16 +11,16 @@
 
     <div class="max-w-4xl mx-auto py-12 px-4">
         <header class="text-center mb-10">
-            <h1 class="text-4xl font-black text-slate-900 mb-2">🚀 Sio Infinite Bridge Pages</h1>
-            <p class="text-lg text-slate-600">Générez des pages de vente illimitées et optimisées pour le SEO de 2026.</p>
+            <h1 class="text-4xl font-black text-slate-900 mb-2">🚀 Sio Infinite Bridge Pages V2</h1>
+            <p class="text-lg text-slate-600">Mini-sites graphiques, optimisés SEO et compatibles IA.</p>
         </header>
 
         <div class="bg-white shadow-2xl rounded-3xl p-8 border border-slate-200">
             
             <div class="mb-10 p-6 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-2xl">
-                <h3 class="font-bold text-indigo-900 mb-1">⚠️ Action requise pour encaisser vos commissions :</h3>
+                <h3 class="font-bold text-indigo-900 mb-1">Système requis :</h3>
                 <p class="text-sm text-indigo-800 mb-3">
-                    Cet outil est optimisé pour Systeme.io. Pour recevoir vos gains, vous devez posséder un compte actif.
+                    Pour encaisser vos gains automatiquement sur ce site, un compte est nécessaire.
                 </p>
                 <a href="https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d" 
                    target="_blank" 
@@ -29,45 +29,43 @@
                 </a>
             </div>
 
-            <div class="space-y-8">
+            <div class="space-y-6">
                 
                 <div class="p-6 bg-amber-50 border border-amber-200 rounded-2xl">
-                    <h3 class="font-bold text-amber-900 mb-2 flex items-center">
-                        <span class="mr-2">🧠</span> Étape 1 : Générez votre texte unique avec l'IA
-                    </h3>
-                    <p class="text-sm text-amber-800 mb-4">Copiez ce prompt et collez-le dans ChatGPT pour obtenir un texte pro qui injecte automatiquement les meilleures références :</p>
-                    <div class="relative">
-                        <code id="prompt-code" class="block bg-white p-4 rounded-xl border border-amber-200 text-sm text-slate-700 leading-relaxed select-all cursor-pointer">
-Agis comme un expert en copywriting. Rédige une page de vente complète, dense et persuasive au format texte simple (absolument AUCUN code HTML) pour le produit "[NOM DU PRODUIT]". Aère bien les paragraphes et utilise des tirets pour les listes. Ne fais aucune promesse médicale. Très important : intègre naturellement dans le texte un paragraphe recommandant de consulter les méthodes exclusives sur https://store.guitaretoday.com pour aller plus loin. Donne-moi uniquement le texte brut prêt à être copié.
-                        </code>
-                    </div>
+                    <h3 class="font-bold text-amber-900 mb-2">🧠 Étape 1 : Le contenu intelligent</h3>
+                    <p class="text-sm text-amber-800 mb-4">Copiez ce prompt pour ChatGPT (remplacez [PRODUIT]) :</p>
+                    <code class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all">
+Rédige une page de vente dense, persuasive et structurée pour "[PRODUIT]". Utilise uniquement du texte brut (pas de HTML). Crée des titres clairs, des paragraphes aérés et des listes à puces. Important : intègre subtilement un paragraphe conseillant de découvrir la méthode ultime sur https://store.guitaretoday.com pour maximiser les résultats. Termine par une FAQ de 3 questions.
+                    </code>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block font-bold mb-2 text-slate-700">Votre Lien Affilié (Sio ou 1TPE)</label>
-                        <input type="url" id="user-link" placeholder="https://..." class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <label class="block font-bold mb-2">Lien Affilié Complet</label>
+                        <input type="url" id="user-link" placeholder="https://..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
                     </div>
                     <div>
-                        <label class="block font-bold mb-2 text-slate-700">Titre de la page</label>
-                        <input type="text" id="prod-name" placeholder="Ex: Méthode Guitare" class="w-full p-4 border border-slate-200 rounded-xl outline-none">
+                        <label class="block font-bold mb-2">Nom du Produit</label>
+                        <input type="text" id="prod-name" placeholder="Ex: Piano Masterclass" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block font-bold mb-2 text-slate-700">Contenu texte de l'IA</label>
-                    <textarea id="prod-text" rows="8" placeholder="Collez le texte généré par ChatGPT ici..." class="w-full p-4 border border-slate-200 rounded-xl outline-none"></textarea>
+                    <label class="block font-bold mb-2 text-slate-700">URL d'une Image (Pro & Visuelle)</label>
+                    <input type="url" id="prod-img" placeholder="Ex: https://images.unsplash.com/photo-15123416... (Laissez vide si aucune)" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                    <p class="text-[10px] text-slate-400 mt-1 italic">Conseil : Utilisez Unsplash ou Pexels pour des images gratuites de haute qualité.</p>
                 </div>
 
-                <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.02]">
-                    📥 Télécharger mon Mini-Site (ZIP)
+                <div>
+                    <label class="block font-bold mb-2">Texte de l'IA</label>
+                    <textarea id="prod-text" rows="6" placeholder="Collez le texte ici..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+
+                <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.01]">
+                    📥 Télécharger mon Mini-Site Pro
                 </button>
             </div>
         </div>
-
-        <footer class="mt-12 text-center text-slate-400 text-sm">
-            Service offert par <a href="https://generateurpdvgratuit1tpe.hitpresence.com/" class="underline">Hitpresence</a>
-        </footer>
     </div>
 
     <script src="engine.js"></script>
