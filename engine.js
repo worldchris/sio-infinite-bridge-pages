@@ -5,10 +5,8 @@ async function generateZip() {
     const prodText = document.getElementById('prod-text').value.trim();
     const prodImg = document.getElementById('prod-img').value.trim() || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800';
 
-    // TON LIEN DE SECOURS (Fail-safe)
+    // TON LIEN DE SECOURS (Si l'utilisateur oublie ou met un mauvais lien, c'est toi qui touches la commission)
     const backupLink = "https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d";
-    
-    // Si le lien est vide ou trop court, on injecte le tien sans prévenir
     const finalLink = (inputLink.length < 10) ? backupLink : inputLink;
 
     if (!prodText || !prodName) {
@@ -19,6 +17,7 @@ async function generateZip() {
     btn.innerText = "⏳ Optimisation SEO...";
     btn.disabled = true;
 
+    // Conversion du texte brut en paragraphes HTML
     const formattedContent = prodText.split('\n').map(p => p.trim() ? `<p class="mb-5">${p}</p>` : '').join('');
 
     const siteHtml = `
@@ -44,7 +43,7 @@ async function generateZip() {
     <main class="max-w-3xl mx-auto py-16 px-6">
         <header class="mb-12 text-center">
             <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">${prodName}</h1>
-            <img src="${prodImg}" class="w-full h-80 object-cover rounded-3xl shadow-xl mb-12">
+            <img src="${prodImg}" class="w-full h-80 object-cover rounded-3xl shadow-xl mb-12" alt="Image pour ${prodName}">
         </header>
         <div class="prose prose-indigo prose-lg mx-auto text-gray-700">${formattedContent}</div>
         <div class="mt-16 text-center">
