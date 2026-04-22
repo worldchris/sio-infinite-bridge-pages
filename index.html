@@ -3,68 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de Mini-Sites Pro & SEO</title>
+    <title>Sio Infinite | Générateur de Mini-Sites Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <div class="max-w-4xl mx-auto py-12 px-4">
-        <header class="text-center mb-10">
-            <h1 class="text-4xl font-black text-slate-900 mb-2">🚀 Sio Infinite Bridge Pages V2</h1>
-            <p class="text-lg text-slate-600">Mini-sites graphiques, optimisés SEO et compatibles IA.</p>
+    <div class="max-w-4xl mx-auto py-16 px-6">
+        <header class="text-center mb-12">
+            <div class="inline-block bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">VERSION 2.0 PREMIUM</div>
+            <h1 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">Sio Infinite Builder</h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto">Transformez vos liens d'affiliation en mini-sites professionnels que Google et Bing vont adorer.</p>
         </header>
 
-        <div class="bg-white shadow-2xl rounded-3xl p-8 border border-slate-200">
+        <div class="bg-white shadow-2xl rounded-[2rem] p-10 border border-slate-100">
             
-            <div class="mb-10 p-6 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-2xl">
-                <h3 class="font-bold text-indigo-900 mb-1">Système requis :</h3>
-                <p class="text-sm text-indigo-800 mb-3">
-                    Pour encaisser vos gains automatiquement sur ce site, un compte est nécessaire.
-                </p>
-                <a href="https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d" 
-                   target="_blank" 
-                   class="inline-block bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition">
-                   Créer mon compte gratuit Systeme.io
+            <div class="mb-10 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 border-l-4 border-indigo-600 rounded-r-2xl">
+                <h3 class="font-bold text-indigo-900 mb-1">Étape 0 : Activez vos commissions</h3>
+                <p class="text-sm text-indigo-800/80 mb-4">Il est indispensable d'avoir un compte pour recevoir vos paiements.</p>
+                <a href="https://systeme.io/fr?sa=sa16047325683a6745455482376be9c81d" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
+                    Créer mon compte gratuit Sio
                 </a>
             </div>
 
-            <div class="space-y-6">
+            <div class="space-y-8">
                 
-                <div class="p-6 bg-amber-50 border border-amber-200 rounded-2xl">
-                    <h3 class="font-bold text-amber-900 mb-2 flex items-center">
-                        <span class="mr-2">🧠</span> Étape 1 : Le contenu intelligent
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                    <h3 class="font-bold text-slate-900 mb-3 flex items-center">
+                        <span class="mr-2 text-xl text-indigo-600">✨</span> Étape 1 : Le Contenu Intelligent
                     </h3>
-                    <p class="text-sm text-amber-800 mb-4">Copiez ce prompt pour ChatGPT (remplacez [PRODUIT]) :</p>
-                    <code class="block bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed select-all cursor-pointer">
-Agis comme un expert en copywriting. Rédige une page de vente complète, dense et persuasive au format texte simple (absolument AUCUN code HTML) pour le produit "[NOM DU PRODUIT]". Aère bien les paragraphes et utilise des tirets pour les listes. Ne fais aucune promesse médicale. Le ton doit être professionnel et orienté conversion. Termine par une FAQ de 3 questions. Donne-moi uniquement le texte brut prêt à être copié.
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed">Copiez ce prompt pour ChatGPT afin d'obtenir un texte unique qui évite le "duplicate content" :</p>
+                    <code class="block bg-white p-4 rounded-xl border border-slate-200 text-xs text-slate-600 leading-relaxed select-all cursor-pointer hover:border-indigo-300 transition">
+Agis comme un expert en conversion. Rédige une page de vente structurée pour le produit "[NOM DU PRODUIT]". Utilise du texte brut (pas de HTML). Crée une accroche forte, des paragraphes captivants et une liste de bénéfices. Le ton doit être premium et rassurant. Termine par une FAQ de 3 questions.
                     </code>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block font-bold mb-2">Lien Affilié Complet</label>
-                        <input type="url" id="user-link" placeholder="https://..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                    <div class="space-y-2">
+                        <label class="font-bold text-slate-700">Votre Lien Affilié</label>
+                        <input type="url" id="user-link" placeholder="https://votre-lien.com" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
                     </div>
-                    <div>
-                        <label class="block font-bold mb-2">Nom du Produit</label>
-                        <input type="text" id="prod-name" placeholder="Ex: Piano Masterclass" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                    <div class="space-y-2">
+                        <label class="font-bold text-slate-700">Titre de l'Offre</label>
+                        <input type="text" id="prod-name" placeholder="Ex: Masterclass Piano" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block font-bold mb-2 text-slate-700">URL d'une Image (Pro & Visuelle)</label>
-                    <input type="url" id="prod-img" placeholder="Ex: https://images.unsplash.com/photo-15123416... (Laissez vide si aucune)" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                    <p class="text-[10px] text-slate-400 mt-1 italic">Conseil : Utilisez Unsplash ou Pexels pour des images gratuites de haute qualité.</p>
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-700">Image de Présentation (URL)</label>
+                    <input type="url" id="prod-img" placeholder="Lien d'une image pro (Unsplash, etc.)" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
                 </div>
 
-                <div>
-                    <label class="block font-bold mb-2">Texte de l'IA</label>
-                    <textarea id="prod-text" rows="6" placeholder="Collez le texte brut ici..." class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-700">Contenu de la page (Texte Brut)</label>
+                    <textarea id="prod-text" rows="8" placeholder="Collez ici le texte généré par l'IA..." class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition"></textarea>
                 </div>
 
-                <button onclick="generateZip()" id="btn-main" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-5 rounded-2xl text-xl shadow-xl transition transform hover:scale-[1.01]">
-                    📥 Télécharger mon Mini-Site Pro
+                <button onclick="generateZip()" id="btn-main" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition transform hover:scale-[1.02]">
+                    📥 Télécharger mon Pack Premium (ZIP)
                 </button>
             </div>
         </div>
